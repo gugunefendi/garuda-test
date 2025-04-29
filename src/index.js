@@ -5,6 +5,28 @@ import url from 'url'
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
+
+const cb0 = (req, res, next) => {
+    console.log('CB0')
+    next()
+}
+
+const cb1 = (req, res, next) => {
+    console.log('CB1')
+    next()
+}
+
+const cb2 = (req, res, next) => {
+    console.log('CB2')
+    next()
+}
+
+app.get('/products2', [cb0, cb1, cb2], (req, res) => {
+    res.json([
+        'Route handler'
+    ])
+})
+
 // simple respond
 app.get('/', (req, res) => {
   res.send('Hello World!')
